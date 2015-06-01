@@ -1,0 +1,123 @@
+<html>
+<body>
+<head>
+        
+        <TITLE>
+Space Journey
+</TITLE>
+
+<script type="text/javascript">
+	function GOtoSPACE ()
+	{
+		var currentDiv = document.getElementById('marquee');
+		currentDiv.innerHTML = '<marquee loop="1" scrollamount="50" direction="right"><img src="http://www.logindesign.ru/images/raketa.png" /></marquee>';
+
+		var infoDiv = document.getElementById('bye');
+
+
+		
+		var nickname = document.getElementById('name1').value;
+		
+		
+		var squad01 = document.getElementById('squad');
+		
+		var squad11 = squad01.options[squad01.selectedIndex].text;
+
+		var sex_ = document.getElementById('sex');
+
+		var sex__ = sex_.options[sex_.selectedIndex].text
+		
+
+		
+
+		infoDiv.innerHTML = '<p>' + nickname + ' ' + squad11 + ' ' + sex__ + '</p>';
+
+	}
+</script>
+
+    </head>
+
+
+<H1 class = "spaceheader">
+	space begins today!
+	</H1>
+
+
+ 
+
+<style>
+  body { background: url(http://static.zerochan.net/Nauimusuka.full.1806176.jpg); }
+
+.fields
+{
+	color: #E0FFFF;
+	font-family: sans-serif;
+	font-size: 25;
+}
+
+</style>
+
+<style type="text/css">
+   H1 
+   { http://images.astronet.ru/pubd/2011/06/08/0001252095/shuttleiss_nasa_6048.jpg
+   	margin: 1em 0 0.5em 0;
+    color: #343434;
+    font-weight: bold;
+    font-family: 'Ultra', sans-serif;  
+    font-size: 36px;
+    line-height: 42px;
+    text-transform: uppercase;
+    text-shadow: 0 2px white, 0 3px #777;
+    /*border: 4px double black*/
+   }
+
+</style>
+
+<div>
+<div style="float: left; margin: 1%">
+	<iframe  width="560" height="315" src="https://www.youtube.com/embed/HWxBTHVhc3I" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div style="float: left">
+<div class="fields">nickname: </div>
+        <input id="name1" type = "text"/><br/>
+        <div class="fields">sex: </div>
+        <select id="sex" >
+		    <option  value="m">male</option>
+		    <option selected value="f">female</option>
+		    <option value="other">another sex</option>
+		</select><br/>
+        <div class="fields">desired squad: </div>
+        <select id="squad" >
+		    <option  value="A">scout of galaxies</option>
+		    <option selected value="B">agent of cosmos</option>
+		    <option value="C">colonies' founder</option>
+		</select>
+		<br/>
+
+
+        
+
+<div style="margin-top: 20px">
+<button onclick="GOtoSPACE()">
+<img style="height:70px;" src="http://www.logindesign.ru/images/raketa.png">
+<H1  style="font-size: 12px">Launch your profile</H1>
+</button>
+</div>
+</div>
+
+<div id = "bye"></div>
+
+
+
+</div>
+
+<div id = "marquee">
+</div>
+
+<a href="../index.html"><button>Main page (direct reference)</button></a>
+<a href="home/testim/my1stRepo/myproject/index.html"><button>Main page </button></a>
+
+</body>
+</html>
+
