@@ -19,7 +19,7 @@ class Base(object):
 
     def __iter__(self):
         self.start_response(status_code,headers)
-        template = self.teplates.get_template(self.template)
+        template = self.templates.get_template(self.template)
         yield template.render(link=self.link)
              
 class Index(Base):
