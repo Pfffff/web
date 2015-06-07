@@ -1,14 +1,18 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 from paste import reloader
 import selector
 from jinja2 import Environment, FileSystemLoader
 
-path_to_aboutme = """<a href="aboutme/aboutme.html">aboutme.html</a>"""
-path_to_index = """<a href="index.html">index.html</a>"""
+path_to_aboutme = """<a href="about/aboutme.html">aboutme.html</a>"""
+path_to_index = """<a href="../index.html">main page</a>"""
 
 status_code = '200 OK'
-headers = [('Content-Type','text/html; charset=UTF-8')]
+headers = [('Content-Type','text/html')]
 
-# Базовый класс  
+# базовый класс  
 class Base(object):
     
     def __init__(self,environ,start_response,link,template):
@@ -21,7 +25,7 @@ class Base(object):
         # устанавливаем шаблон
         self.template = template
         # устанавливаем ссылку
-        self.link = link
+	self.link = link
 
     def __iter__(self):
     	# тело ответа содержит указанные ранее статус и заголовок
@@ -36,18 +40,19 @@ class Index(Base):
 
     def __init__(self,environ,start_response):
     	# передаём данные в конструктор базового класса
-        Base.__init__(self, environ, start_response, path_to_index, "index.html")
+        Base.__init__(self, environ, start_response, path_to_aboutme, "index.html")
 
 class AboutMe(Base):
     def __init__(self,environ,start_responce):
     	# передаём данные в конструктор базового класса
-        Base.__init__(self,environ,start_responce,path_to_aboutme,"aboutme.html")
+        Base.__init__(self,environ,start_responce, path_to_index,"about/aboutme.html")
 
 def init():
     selector_ =  selector.Selector()
     # указываем пути и название классов-обработчиков
+    selector_.add("/", GET = Index)
     selector_.add("/index.html",GET=Index) 
-    selector_.add("/aboutme/aboutme.html",GET=AboutMe)
+    selector_.add("/about/aboutme.html",GET=AboutMe)
     # когда пути указаны, они становятся регулярными выражениями
     # когда selector_ получит запрос, он будет проверять его на соответствие с этими выражениями
     return selector_
